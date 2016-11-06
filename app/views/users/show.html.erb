@@ -1,0 +1,36 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "个人中心" }
+    ]
+} %>
+
+<div class="row container center-block">
+  <div class="col-md-4 col-md-offset-4">
+    <%= render 'shared/search' %>
+    <%= link_to "库存列表", books_path, class: "btn btn-default btn-lg btn-block" %>
+    <%= link_to "查看预约", me_appointments_path, class: "btn btn-default btn-lg btn-block" %>
+    <%= link_to "查看记录", me_records_path, class: "btn btn-default btn-lg btn-block" %>
+    <%= link_to "个人资料", me_information_path, class: "btn btn-default btn-lg btn-block" %>
+    <% if can? :create, Book %>
+      <%= link_to "新书入库", new_book_path, class: "btn btn-default btn-lg btn-block" %>
+    <% end %>
+    <% if can? :manage, Appointment %>
+      <%= link_to "处理预约", appointments_path, class: "btn btn-default btn-lg btn-block" %>
+    <% end %>
+    <% if can? :statistics, User %>
+      <%= link_to "统计信息", statistics_path, class: "btn btn-default btn-lg btn-block" %>
+    <% end %>
+    <% if can? :enpower, User %>
+      <%= link_to "变更权限", enpower_path, class: "btn btn-warning btn-lg btn-block" %>
+    <% end %>
+    <%# if can? :manage, Book %>
+      <%#= link_to "后台管理", admin_root_path, class: "btn btn-warning btn-lg btn-block" %>
+    <%# end %>
+    <%# a way to remove it? %>
+        <p>
+      <%= bootstrap_form_tag url: logout_path, method: "delete" do %>
+        <%= submit_tag "退出", class: "btn btn-danger btn-block" %>
+      <% end %>
+    </p>
+  </div>
+</div>

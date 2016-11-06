@@ -1,0 +1,41 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "个人中心", link: profile_path },
+        { name: "个人资料" }
+    ]
+} %>
+
+<div class="center-block container">
+  <table class="table table-bordered">
+    <tr>
+      <td>姓名</td>
+      <td><%= @info[:name] %></td>
+    </tr>
+    <tr>
+      <td>电子邮箱</td>
+      <td><%= @info[:email] %></td>
+    </tr>
+    <tr>
+      <td>手机号</td>
+      <td><%= @info[:phone] %></td>
+    </tr>
+    <tr>
+      <td>毕业年</td>
+      <td><%= @info[:graduation] %></td>
+    </tr>
+    <tr>
+      <td>学工号</td>
+      <td><%= @info[:school_id] %></td>
+    </tr>
+    <tr>
+      <td>现有积分</td>
+      <td><%= @info[:credit] %></td>
+    </tr>
+    <tr>
+      <td>状态</td>
+      <td><%= @info[:status] %></td>
+    </tr>
+  </table>
+  <%= link_to "修改个人信息", me_information_edit_path, class: "btn btn-default btn-block" %>
+  <%= link_to "修改密码", me_password_edit_path, class: "btn btn-warning btn-block" %>
+</div>

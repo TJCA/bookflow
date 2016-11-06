@@ -1,0 +1,31 @@
+<%= bootstrap_form_for :book, url: books_path, :html => {:id => "book_form"} do |f| %>
+    <div class="form-group">
+        <label for="user">捐书人</label>
+        <input type="text" class="form-control" id="user" name="user">
+    </div>
+
+    <%= f.text_field :isbn, label: "ISBN" %>
+    <%= f.text_field :title, label: "书名" %>
+    <%= f.text_field :field, label: "类型" %>
+    <%= f.text_field :ori_price, label: "原价" %>
+    <%#= f.text_field :ratio, label: "折价比例" %>
+    <%= f.text_field :remark, label: "备注" %>
+    
+    <div class="form-group">
+        <%= radio_button_tag :type, "textbook" %>
+        <%= label_tag :type_textbook, "教材教辅" %>
+        <%= radio_button_tag :type, "outside" %>
+        <%= label_tag :type_outside, "课外书" %>
+        <%= radio_button_tag :type, "print" %>
+        <%= label_tag :type_print, "印刷品" %>
+    </div>
+    <%= f.hidden_field :ratio, {:value => 1.0, :id => "ratio_item"} %>
+    <div class="form-group">
+        <%= check_box_tag :cd_lost %>
+        <%= label_tag :cd_lost, "光盘遗失(如果有)" %>
+    </div>
+       
+    <div class="form-group"> 
+        <%= f.submit "提交", class: "btn btn-primary btn-block" %>
+    </div>
+<% end %>

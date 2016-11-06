@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+    background-color: rgb(231, 232, 239);
+}
+
+.app-name-header {
+    margin-bottom: 0;
+    background-color: rgb(247, 246, 249);
+}
+
+a.app-title:visited, a.app-title:hover, a.app-title:active {
+    color: #6F5499;
+}
+
+.main-panel {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: rgb(242, 242, 242);
+}
+
+.path-nav {
+    background-color: #6F5499;
+    overflow: hidden;
+    /*text-overflow: ellipsis;*/
+    white-space: nowrap;
+    width: 100%;
+}
+
+nav[role="navigation"] {
+    padding-right: 3%;
+    background-color: #6F5499;
+}
+
+ol.path-nav a {
+    color: rgb(193, 193, 193);
+}
+
+ol.path-nav li.active {
+    color: white;
+}
+
+.table {
+    background-color: white;
+}
+
+.input-no-bottom {
+    margin-bottom: 0;
+}
+
+.login-btn {
+    margin-top: 2em;
+}
+
+.login-btn-bottom {
+    margin-bottom: 2em;
+}
+
+.footer {
+    margin-bottom: 2em;
+}
+
+a.reset-pwd:link, a.reset-pwd:visited, a.reset-pwd:hover, a.reset-pwd:active {
+    color: #337AB7;
+    text-decoration: none;
+    background: transparent;
+}

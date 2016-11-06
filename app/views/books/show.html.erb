@@ -1,0 +1,78 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "个人中心", link: profile_path },
+        { name: "库存列表", link: books_path },
+        { name: @book.title }
+    ]
+} %>
+
+<div class="center-block container row">
+  <div class="col-md-4 col-md-offset-4 main-panel">
+  <% if @book.deprecated %>
+    <div class="alert alert-warning" role="alert">
+      这本书的版本已经过时，可能不符合现行课程需要
+    </div>
+  <% end %>
+  <table class="table table-bordered">
+    <tr>
+      <td>书名</td>
+      <td><%= @book.title %></td>
+    </tr>
+    <% if @book.field %>
+    <tr>
+      <td>类别</td>
+      <td><%= @book.field %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td>ISBN编号</td>
+      <td><%= @book.isbn %></td>
+    </tr>
+    <tr>
+      <td>所需积分</td>
+      <td><%= @book.ratio * @book.ori_price %></td>
+    </tr>
+    <tr>
+      <td>剩余库存</td>
+      <td><%= @book.stock %></td>
+    </tr>
+    <% if can? :manage, Book %>
+    <tr>
+      <td>备注</td>
+      <td><%= @book.remark %></td>
+    </tr>
+    <% end %>
+  </table>
+  <p>
+  <%= bootstrap_form_tag url: appointments_path do %>
+    <%= hidden_field :book, :id %>
+    <div class="form-group">
+      <%= label_tag "预约时间" %>
+      <%= select_tag "time", options_for_select(@occasion_list), id: "appointment_date", class: "form-control" %>
+    </div>
+    <%= submit_tag "我要预约这本书", class: "btn btn-default btn-block",
+                   data: { confirm: '确定要预约《' + @book.title + '》这本书吗？' } %>
+  <% end %>
+  </p>
+  <% if can? :create, Book %>
+  <p>
+  <%= bootstrap_form_tag url: book_increment_path, method: :post do %>
+    <%= hidden_field :book, :id %>
+    <%= text_field_tag :owner, nil, placeholder: "输入捐书人学号直接添加一本库存", class: "form-control" %>
+    <%= submit_tag "增加一本库存", class: "btn btn-primary btn-block",
+                   data: { confirm: '确定入库《' + @book.title + '》这本书吗？' }, style: "display: none;" %>
+  <% end %>
+    <% end %>
+  </p>
+    <% if can? :update, Book %>
+      <p>
+        <%= bootstrap_form_tag url: book_out_path, method: :post do %>
+          <%= hidden_field :book, :id %>
+          <%= text_field_tag :owner, nil, placeholder: "输入用户学号直接出库", class: "form-control" %>
+          <%= submit_tag "增加一本库存", class: "btn btn-primary btn-block",
+                   data: { confirm: '确定出库《' + @book.title + '》这本书吗？' }, style: "display: none;" %>
+        <% end %>
+      </p>
+  <% end %>
+  </div>
+  </div>

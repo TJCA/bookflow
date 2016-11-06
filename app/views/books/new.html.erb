@@ -1,0 +1,11 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "管理员", link: profile_path },
+        { name: "书籍管理", link: books_path },
+        { name: "新书入库" }
+    ]
+} %>
+
+<div class="center-block container">
+    <%= render 'form' %>
+</div>

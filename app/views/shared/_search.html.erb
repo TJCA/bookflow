@@ -1,0 +1,6 @@
+<%= bootstrap_form_tag url: books_path, method: "get", class: "form-inline" do %>
+    <div class="form-group">
+      <%= text_field_tag :q, nil, :placeholder => "输入想找的书名，按回车搜索", class: "form-control" %>
+      <%#= submit_tag "搜索", class: "btn btn-default" %>
+    </div>
+<% end %>

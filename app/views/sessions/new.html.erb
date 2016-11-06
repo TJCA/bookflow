@@ -1,0 +1,22 @@
+<%= render 'shared/logo' %>
+
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "用户登录" }
+    ]
+} %>
+
+<div class="row center-block container">
+  <div class="col-md-4 col-md-offset-4">
+    <%= bootstrap_form_for :login_info, url: login_path do |f| %>
+      <%= f.text_field :school_id, hide_label: true, placeholder: "学号",
+                       wrapper: { class: "input-no-bottom" },
+                       style: "border-radius: 4px 4px 0 0;" %>
+      <%= f.password_field :password, hide_label: true,
+                       placeholder: "密码",
+                       style: "border-radius: 0 0 4px 4px;" %>
+      <%= f.submit "登录", class: "btn btn-default btn-block" %>
+    <% end %>
+    <%= link_to "忘记密码", reset_path, class: "reset-pwd" %>
+  </div>
+</div>

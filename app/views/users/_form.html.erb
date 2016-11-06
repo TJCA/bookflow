@@ -1,0 +1,20 @@
+<%= bootstrap_form_for(@user) do |f| %>
+  <%= f.text_field :fullname, label: "姓名" %>
+  <% if form_method != :edit %>
+    <%= f.text_field :school_id, label: "学工号" %>
+    <%= f.text_field :phone, label: "手机号", id: "phone-field" %>
+    <%= f.password_field :password, label: "密码", id: "pwd-field" %>
+  <% end %>
+  <%= f.email_field :email, label: "邮箱" %>
+  <%= f.select :grad_year, (Time.now.year)..(Time.now.year + 8), label: "毕业年" %>
+  <% if form_method == :edit %>
+    <%= f.submit "更改", class: "btn btn-primary btn-block" %>
+  <% else %>
+    <p>
+    <%= text_field_tag :verify_code, nil, class: "form-control", id: "verify-field",
+                       style: "display: none;", placeholder: "请输入短信验证码" %>
+    </p>
+    <%= button_tag "验证手机号", type: "button", id: "check-btn", class: "btn btn-primary btn-block" %>
+    <%= f.submit "注册", class: "btn btn-primary btn-block", id: "reg-btn", style: "display: none;" %>
+  <% end %>
+<% end %>

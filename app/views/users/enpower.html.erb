@@ -1,0 +1,34 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "管理员", link: profile_path },
+        { name: "变更权限" },
+    ]
+} %>
+
+<div class="center-block container row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= bootstrap_form_tag url: enpower_path, method: "get", class: "form-inline" do %>
+      <div class="form-group">
+        <%= text_field_tag :q, nil, :placeholder => "输入学号以搜索", class: "form-control" %>
+        <%#= submit_tag "搜索", class: "btn btn-default" %>
+      </div>
+    <% end %>
+    <div class="list-group">
+      <% @admins.each do |admin| %>
+        <a class="list-group-item admin-selector" href="javascript:void(0);" data-sid="<%= admin.school_id %>"
+           data-op="<%= if admin.role & 0b1110 != 0 then 'depower'
+                        else 'enpower' end %>">
+          <% if admin.role & 0b1000 != 0 %>
+            <span class="badge">超级管理员</span>
+          <% elsif admin.role & 0b0100 != 0 %>
+            <span class="badge">管理员</span>
+          <% elsif admin.role & 0b0010 != 0 %>
+            <span class="badge">操作员</span>
+          <% end %>
+          <%#= link_to '处理', appointment, method: :put, data: { confirm: '确定完成《' + appointment.book.title + '》的预约吗' } %>
+          <%= admin.school_id + " - " + admin.fullname %>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+      { name: "管理员", link: profile_path },
+      { name: "统计信息" }
+    ]
+} %>
+
+<div class="row container center-block">
+  <div class="col-md-4 col-md-offset-4">
+    <table class="table">
+      <tr><td>用户总数</td><td><%= @all_users %></td></tr>
+      <tr><td>库存总数</td><td><%= @all_books %></td></tr>
+      <tr><td>上线后注册数</td><td><%= @registrations_after_launch %></td></tr>
+    </table>
+  </div>
+</div>

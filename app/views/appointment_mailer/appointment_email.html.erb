@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<p><%= @user.fullname %>同学：</p>
+<p>你好，您在同济二手书漂流活动中预约了<b>《<%= @book.title %>》</b>一书，请于<%= @time.strftime('%m-%d %H:%M') %>前往大学生活动中心312权益部办公桌领取。</p>
+<p>同济大学学生会权益保障与生活福利部</p>
+</body>
+</html>

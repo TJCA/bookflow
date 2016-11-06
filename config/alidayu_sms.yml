@@ -1,0 +1,22 @@
+defaults: &defaults
+  alidayu:
+    app_key: null
+    app_secret: null
+    post_url: 'http://gw.api.taobao.com/router/rest'
+    product: "同济二手书漂流"
+    sms_templates:
+      - name: "sign_up"
+        sms_free_sign_name: null # 短信签名
+        sms_template_code: null # 短信模板
+      - name: "msg_login"
+        sms_free_sign_name: null
+        sms_template_code: null
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,15 @@
+<nav role="navigation">
+  <ol class="breadcrumb path-nav">
+    <% link_layers.each do |layer| %>
+      <% if layer[:link] %>
+        <li>
+          <%= link_to layer[:name], layer[:link] %>
+        </li>
+      <% else %>
+        <li class="active">
+          <%= layer[:name] %>
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>

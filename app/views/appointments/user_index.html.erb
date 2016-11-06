@@ -1,0 +1,34 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "个人中心", link: profile_path },
+        { name: "查看我的预约" }
+    ]
+} %>
+
+<div class="center-block container row">
+  <div class="col-md-4 col-md-offset-4">
+  <div class="list-group">
+    <% if can? :read, Appointment %>
+    <% @appointments.each do |ap| %>
+    <a class="list-group-item">
+      <span class="badge">
+        <%=
+            case ap.status
+            when "issued" then "已处理"
+            when "cancelled" then "已取消"
+            when "ready" then "处理中"
+            else "其他"
+            end
+        %>
+      </span>
+      <%#= ap.created_at.strftime("%Y-%m-%d") %>
+      <%= ap.book.title %>
+    </a>
+    <% end %>
+    <% end %>
+  </div>
+  <% if can? :read, Appointment %>
+  <%= will_paginate @appointments, renderer: BootstrapPagination::Rails %>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "个人中心", link: profile_path },
+        { name: "查看记录" }
+    ]
+} %>
+
+<div class="center-block container row">
+  <div class="col-md-4 col-md-offset-4">
+    <%#table class="table table-bordered">
+      <% @user_records.each do |record| %>
+      <%#tr>
+        <td><#%= record.updated_at.strftime('%Y-%m-%d') %><%#/td>
+        <%#td>
+          <%#=
+            case record.verb
+            when "new_book_in" then "捐书"
+            when "book_out" then "取书"
+            when "new_appointment" then "预约"
+            when "cancel_appointment" then "取消预约"
+            when "finish_appointment" then "处理预约"
+            else "其他事务"
+            end
+          %>
+        <%#/td>
+        <td>
+          <%#=
+            if ["new_book_in", "book_out", "new_appointment", "cancel_appointment",
+                "finish_appointment"].include? record.object
+              #Redesign the table!
+            end
+          %>
+        <%#/td>
+      </tr>
+      <%# end %>
+    <%#/table><%>
+  <div class="list-group">
+    <% @user_records.each do |rc| %>
+    <a class="list-group-item">
+      <span class="badge">
+        <%=
+            case rc.verb
+            when "new_book_in" then "捐书"
+            when "book_out" then "取书"
+            when "new_appointment" then "预约"
+            when "cancel_appointment" then "取消预约"
+            when "finish_appointment" then "处理预约"
+            else "其他事务"
+            end
+        %>
+      </span>
+      <%= rc.created_at.strftime("%Y-%m-%d") %>
+    </a>
+    <% end %>
+  </div>
+  <%= will_paginate @user_records, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

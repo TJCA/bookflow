@@ -1,0 +1,8 @@
+<h1>欢迎登录</h1>
+<%= form_for :login_info, url: logins_path do |f| %>
+  <%= f.label :用户名 %>
+  <%= f.text_field :school_id %>
+  <%= f.label :密码 %>
+  <%= f.password_field :password %>
+  <%= f.submit "登录" %>
+<% end %>
