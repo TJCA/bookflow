@@ -45,7 +45,7 @@ bower.json
 .idea
 .vscode
 config/database.yml
-config/environments
+config/environments/*
 config/alidayu_sms.yml
 *~
 .DS_Store
