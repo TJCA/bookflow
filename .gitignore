@@ -40,3 +40,12 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Others
+.idea
+.vscode
+config/database.yml
+config/environments
+config/alidayu_sms.yml
+*~
+.DS_Store

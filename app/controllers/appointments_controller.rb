@@ -1,16 +1,16 @@
 class AppointmentsController < ApplicationController
   load_and_authorize_resource
-  
+
   # all appointments (managers only)
   def index
   end
-  
+
   def user_index
     @appointments = Appointment.joins(:book).where(school_id: current_user.school_id, status: 2)
                         .order(updated_at: :desc)
                         .paginate(:page => (params[:page]) ? params[:page].to_i : 1, :per_page => 10)
   end
-  
+
   def create
     current_book = Book.find_by id: appointments_params[:id]
     case Appointment.make_appointment(appointments_params[:id], current_user, params[:time])
@@ -25,7 +25,7 @@ class AppointmentsController < ApplicationController
       redirect_to books_url, flash: { error: "未知错误" }
     end
   end
-  
+
   def edit
   end
 
@@ -37,10 +37,10 @@ class AppointmentsController < ApplicationController
                     object: current_book_appointment.id, adverb: current_book_appointment.user)
       redirect_to :back, flash: { success: "预约处理成功" }
     else
-      redirect_to :back, flash: { error: "预约已经被处理过" + current_book_appointment }
+      redirect_to :back, flash: { error: "第%d号预约已经被处理过" % current_book_appointment.id }
     end
   end
-  
+
   private
     def appointments_params
       params.require(:book).permit(:id)
