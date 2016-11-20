@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   has_many :appointments
   validates :title, presence: true
   validates :ratio, :ori_price, numericality: { greater_than: 0.0 }
-  validates :ratio, numericality: { less_than_or_equal_to: 1.0  }
+  # validates :ratio, numericality: { less_than_or_equal_to: 1.0  }
 
   def self.create_book(pr, owner, operator)
     book = Book.where(isbn: pr[:isbn], title: pr[:title],

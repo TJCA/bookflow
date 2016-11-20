@@ -8,6 +8,6 @@ jQuery(document).ready ->
     if jQuery('#type_textbook').is(':checked')
       total = cd_cost
     else if jQuery('#type_outside').is(':checked')
-      total = 0.5 * cd_cost
+      total = 2.0 * cd_cost
     jQuery('#ratio_item').attr 'value', total
     return
