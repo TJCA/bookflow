@@ -1,0 +1,31 @@
+<%= render partial: 'shared/path', locals: {
+    link_layers: [
+        { name: "管理员", link: profile_path },
+        { name: "查看他人资料" }
+    ]
+} %>
+
+<div class="center-block container row">
+  <div class="col-md-4 col-md-offset-4">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>姓名</th>
+          <td><%= @user.fullname %></td>
+        </tr>
+        <tr>
+          <th>学号</th>
+          <td><%= @user.school_id %></td>
+        </tr>
+        <tr>
+          <th>电话</th>
+          <td><%= @user.phone %></td>
+        </tr>
+        <tr>
+          <th>邮箱</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
 
   def self.register(params)
     params[:password] = salt_pwd(params[:password])
-    params[:credit] = 40
+    params[:credit] = 20
     self.create(params).valid?
   end
 

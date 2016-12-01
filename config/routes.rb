@@ -88,6 +88,7 @@ Rails.application.routes.draw do
   post 'verification', to: 'users#verify'
   post 'login/ask-code', to: 'users#ask_code'
   post 'login/message', to: 'sessions#message_login'
+  get 'users/:school_id/information', to: 'users#show_info'
 
   root 'welcome#index'
 end

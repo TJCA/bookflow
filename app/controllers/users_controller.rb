@@ -113,6 +113,15 @@ class UsersController < ApplicationController
     @all_books = Book.count
     @registrations_after_launch = User.where("created_at > ?", launch_day).count
   end
+
+  def show_info
+    @user = User.where(school_id: params[:school_id]).take
+    if @user.nil?
+      render status: :not_found
+    else
+      render :show_info
+    end
+  end
   
   private
     def user_params

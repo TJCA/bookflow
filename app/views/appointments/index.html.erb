@@ -20,14 +20,20 @@
   </thead>
       %>
 
-  <tbody>
+    <tbody>
+      <tr>
+        <th>用户学号</th>
+        <th>书名</th>
+        <th>预约日期</th>
+        <th>交付日期</th>
+        <th>状态</th>
+      </tr>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.school_id %></td>
+        <td><a href="/users/<%= appointment.school_id %>/information"><%= appointment.school_id %></a></td>
         <td><%= link_to appointment.book.title, book_path(appointment.book.id) %></td>
         <td><%= appointment.updated_at.strftime('%m-%d') %></td>
-        <%#<td><%= link_to 'Show', appointment %><%#</td>%>
-        <%#= link_to 'Edit', edit_appointment_path(appointment) %>
+        <td><%= appointment.promise_date.strftime('%m-%d %H:%M') %></td>
         <% if appointment.status == "ready" %>
           <td><%= link_to '处理', appointment, method: :put, data: { confirm: '确定完成《' + appointment.book.title + '》的预约吗' } %></td>
         <% else %>

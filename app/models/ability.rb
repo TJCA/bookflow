@@ -21,7 +21,7 @@ class Ability
     
     cannot :index, Appointment unless user.has_role? :operator
     can :manage, Appointment if user.has_role? :operator
-    can :statistics, User if user.has_role? :operator
+    can [:statistics, :show_info], User if user.has_role? :operator
     can :create, Book if user.has_role? :operator
     
     can :manage, Book if user.has_role? :admin
